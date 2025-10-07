@@ -65,31 +65,12 @@
 		<div class="container">
 			<div class="logo">BBC</div>
 			<h2>Abrir BBC Digital</h2>
-			<button class="app-button" onclick="openBBCDigital()">
+			<a
+				href="intent://launch/#Intent;package=br.com.bbcdigital;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dbr.com.bbcdigital;end"
+				class="app-button"
+			>
 				Abrir Aplicativo
-			</button>
+			</a>
 		</div>
-
-		<script>
-			function openBBCDigital() {
-				const userAgent = navigator.userAgent
-				const androidPackage = 'br.com.bbcdigital'
-				const androidStoreUrl =
-					'https://play.google.com/store/apps/details?id=br.com.bbcdigital&hl=pt_BR'
-				const iosStoreUrl =
-					'https://apps.apple.com/br/app/bbc-digital/id1480048382'
-
-				if (/Android/i.test(userAgent)) {
-					const intentUrl = `intent://launch/#Intent;package=${androidPackage};end`
-					window.location.href = intentUrl
-					window.open(androidStoreUrl, '_blank')
-				} else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-					window.location.href = 'bbcdigital://'
-					window.open(iosStoreUrl, '_blank')
-				} else {
-					window.open(androidStoreUrl, '_blank')
-				}
-			}
-		</script>
 	</body>
 </html>
