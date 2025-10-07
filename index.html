@@ -3,195 +3,92 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Teste Intent - GitHub Pages</title>
+		<title>Abrir BBC Digital</title>
 		<style>
 			body {
 				font-family: 'Arial', sans-serif;
 				margin: 0;
-				padding: 0;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				padding: 20px;
+				background: #f5f5f5;
 				min-height: 100vh;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				color: white;
 			}
 			.container {
 				text-align: center;
-				background: rgba(255, 255, 255, 0.1);
-				padding: 2rem;
-				border-radius: 15px;
-				backdrop-filter: blur(10px);
-				box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-				border: 1px solid rgba(255, 255, 255, 0.18);
-			}
-			h1 {
-				margin: 0 0 1rem 0;
-				font-size: 3rem;
-				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-			}
-			p {
-				font-size: 1.2rem;
-				margin: 1rem 0;
-				opacity: 0.9;
-			}
-			.status {
-				background: rgba(255, 255, 255, 0.2);
-				padding: 1rem;
-				border-radius: 10px;
-				margin-top: 2rem;
-			}
-			.emoji {
-				font-size: 4rem;
-				margin-bottom: 1rem;
-			}
-			.button-container {
-				margin: 2rem 0;
-				display: flex;
-				flex-direction: column;
-				gap: 1rem;
-				align-items: center;
+				background: white;
+				padding: 40px;
+				border-radius: 8px;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+				max-width: 400px;
 			}
 			.app-button {
-				background: linear-gradient(45deg, #4caf50, #45a049);
+				background: #007cba;
 				color: white;
 				border: none;
-				padding: 1rem 2rem;
-				font-size: 1.1rem;
-				border-radius: 10px;
+				padding: 16px 32px;
+				font-size: 16px;
+				font-weight: 500;
+				border-radius: 6px;
 				cursor: pointer;
-				transition: all 0.3s ease;
+				transition: background-color 0.2s;
+				width: 100%;
 				text-decoration: none;
 				display: inline-block;
-				min-width: 250px;
-				box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+				box-sizing: border-box;
 			}
 			.app-button:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+				background: #005a87;
 			}
-			.app-button.android {
-				background: linear-gradient(45deg, #3ddc84, #2db870);
+			.logo {
+				width: 64px;
+				height: 64px;
+				margin: 0 auto 20px;
+				background: #007cba;
+				border-radius: 12px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: white;
+				font-size: 24px;
+				font-weight: bold;
 			}
-			.app-button.ios {
-				background: linear-gradient(45deg, #007aff, #0056cc);
-			}
-			.device-info {
-				background: rgba(255, 255, 255, 0.15);
-				padding: 1rem;
-				border-radius: 10px;
-				margin: 1rem 0;
-				font-size: 0.9rem;
+			h2 {
+				margin: 0 0 20px 0;
+				color: #333;
+				font-size: 24px;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
-			<div class="emoji">🚀</div>
-			<h1>Teste Intent</h1>
-			<p>Página HTML estática hospedada no GitHub Pages</p>
-
-			<div class="button-container">
-				<h2>🏦 Teste BBC Digital</h2>
-				<button class="app-button android" onclick="openBBCDigital('android')">
-					📱 Abrir no Android
-				</button>
-				<button class="app-button ios" onclick="openBBCDigital('ios')">
-					🍎 Abrir no iOS
-				</button>
-				<button class="app-button" onclick="openBBCDigital('auto')">
-					🔄 Detectar Dispositivo
-				</button>
-			</div>
-
-			<div class="device-info" id="device-info">
-				<p>
-					<strong>Dispositivo:</strong>
-					<span id="device-type">Detectando...</span>
-				</p>
-				<p><strong>User Agent:</strong> <span id="user-agent"></span></p>
-			</div>
-
-			<div class="status">
-				<p><strong>Status:</strong> Projeto configurado com sucesso! ✅</p>
-				<p><strong>Data:</strong> <span id="current-date"></span></p>
-			</div>
+			<div class="logo">BBC</div>
+			<h2>Abrir BBC Digital</h2>
+			<button class="app-button" onclick="openBBCDigital()">
+				Abrir Aplicativo
+			</button>
 		</div>
 
 		<script>
-			// Adiciona a data atual
-			document.getElementById('current-date').textContent =
-				new Date().toLocaleDateString('pt-BR')
-
-			// Detecta o dispositivo
-			function detectDevice() {
+			function openBBCDigital() {
 				const userAgent = navigator.userAgent
-				document.getElementById('user-agent').textContent = userAgent
-
-				if (/Android/i.test(userAgent)) {
-					document.getElementById('device-type').textContent = 'Android'
-					return 'android'
-				} else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-					document.getElementById('device-type').textContent = 'iOS'
-					return 'ios'
-				} else {
-					document.getElementById('device-type').textContent = 'Desktop/Outro'
-					return 'desktop'
-				}
-			}
-
-			// Função para abrir o app BBC Digital
-			function openBBCDigital(platform) {
 				const androidPackage = 'br.com.bbcdigital'
 				const androidStoreUrl =
 					'https://play.google.com/store/apps/details?id=br.com.bbcdigital&hl=pt_BR'
-				const iosAppId = '1480048382'
 				const iosStoreUrl =
 					'https://apps.apple.com/br/app/bbc-digital/id1480048382'
 
-				if (platform === 'auto') {
-					platform = detectDevice()
-				}
-
-				console.log('Tentando abrir BBC Digital para:', platform)
-
-				if (platform === 'android') {
-					// Tenta abrir o app via intent
+				if (/Android/i.test(userAgent)) {
 					const intentUrl = `intent://launch/#Intent;package=${androidPackage};end`
-
-					// Primeiro tenta o intent
 					window.location.href = intentUrl
-
-					// Fallback para a Play Store após um delay
-					setTimeout(() => {
-						window.open(androidStoreUrl, '_blank')
-					}, 2000)
-				} else if (platform === 'ios') {
-					// Tenta abrir o app via URL scheme personalizado
-					const customScheme = 'bbcdigital://'
-
-					// Primeiro tenta o URL scheme personalizado
-					window.location.href = customScheme
-
-					// Fallback para a App Store após um delay
-					setTimeout(() => {
-						window.open(iosStoreUrl, '_blank')
-					}, 2000)
-				} else {
-					// Para desktop ou outros dispositivos, abre a página web do banco
-					alert(
-						'Este teste é específico para dispositivos móveis. Redirecionando para as lojas de aplicativos...'
-					)
 					window.open(androidStoreUrl, '_blank')
-					setTimeout(() => {
-						window.open(iosStoreUrl, '_blank')
-					}, 1000)
+				} else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+					window.location.href = 'bbcdigital://'
+					window.open(iosStoreUrl, '_blank')
+				} else {
+					window.open(androidStoreUrl, '_blank')
 				}
-			}
-
-			// Detecta o dispositivo ao carregar a página
-			window.onload = function () {
-				detectDevice()
 			}
 		</script>
 	</body>
